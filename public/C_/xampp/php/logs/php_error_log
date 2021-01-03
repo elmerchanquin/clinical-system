@@ -1,0 +1,30 @@
+[18-Jan-2020 16:36:47 Europe/Berlin] PHP Notice:  Undefined index: metodo in /home/clinkreh/admin.clinica.gt/Views/personas.php on line 25
+[18-Jan-2020 16:36:47 Europe/Berlin] PHP Notice:  Undefined index: <option value="nombre">Nombre</option>
+                                <option value="codigo">Código</option> in /home/clinkreh/admin.clinica.gt/Views/personas.php on line 29
+[18-Jan-2020 16:36:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/clinkreh/admin.clinica.gt/Views/Conexion.php:8
+Stack trace:
+#0 /home/clinkreh/admin.clinica.gt/Views/personas.php(66): require()
+#1 /home/clinkreh/admin.clinica.gt/Views/personas.php(140): tablaPersonas()
+#2 /home/clinkreh/admin.clinica.gt/public/index.php(6): include('/home/clinkreh/...')
+#3 {main}
+  thrown in /home/clinkreh/admin.clinica.gt/Views/Conexion.php on line 8
+[18-Jan-2020 16:37:43 Europe/Berlin] PHP Notice:  Undefined index: metodo in /home/clinkreh/admin.clinica.gt/Views/personas.php on line 25
+[18-Jan-2020 16:37:43 Europe/Berlin] PHP Notice:  Undefined index: <option value="nombre">Nombre</option>
+                                <option value="codigo">Código</option> in /home/clinkreh/admin.clinica.gt/Views/personas.php on line 29
+[18-Jan-2020 16:37:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/clinkreh/admin.clinica.gt/Views/Conexion.php:8
+Stack trace:
+#0 /home/clinkreh/admin.clinica.gt/Views/personas.php(66): require()
+#1 /home/clinkreh/admin.clinica.gt/Views/personas.php(140): tablaPersonas()
+#2 /home/clinkreh/admin.clinica.gt/public/index.php(6): include('/home/clinkreh/...')
+#3 {main}
+  thrown in /home/clinkreh/admin.clinica.gt/Views/Conexion.php on line 8
+[18-Jan-2020 16:39:41 Europe/Berlin] PHP Notice:  Undefined index: metodo in /home/clinkreh/admin.clinica.gt/Views/personas.php on line 25
+[18-Jan-2020 16:39:41 Europe/Berlin] PHP Notice:  Undefined index: <option value="nombre">Nombre</option>
+                                <option value="codigo">Código</option> in /home/clinkreh/admin.clinica.gt/Views/personas.php on line 29
+[18-Jan-2020 16:39:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/clinkreh/admin.clinica.gt/Views/Conexion.php:8
+Stack trace:
+#0 /home/clinkreh/admin.clinica.gt/Views/personas.php(66): require()
+#1 /home/clinkreh/admin.clinica.gt/Views/personas.php(140): tablaPersonas()
+#2 /home/clinkreh/admin.clinica.gt/public/index.php(6): include('/home/clinkreh/...')
+#3 {main}
+  thrown in /home/clinkreh/admin.clinica.gt/Views/Conexion.php on line 8
