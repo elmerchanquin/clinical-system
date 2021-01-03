@@ -51,16 +51,10 @@
                     print('
                     <tr>
                 <th>
-                    Código
-                </th>
-                <th>
                     Nombre
                 </th>
                 <th>
                     Teléfono
-                </th>
-                <th>
-                    DPI
                 </th>
                 <th>
                     Consulta
@@ -77,10 +71,8 @@
                     while ($fila = $resultado->fetch_assoc()) {
                         echo  '
                             <tr>
-                                <td>' . $fila['codigo'] . '</td>
                                 <td>' . $fila['nombre'] . '</td>
                                 <td>' . $fila['telefono'] . '</td>
-                                <td>' . $fila['identificacion'] . '</td>
                                 <td><form method="POST" action="https://admin.clinica.gt/consulta/"><input type="hidden" name="codigo" value="' . $fila['codigo'] . '"><button type="submit">Consulta</button></a></form></td>
                                 <td><form method="POST" action="https://admin.clinica.gt/ver-todo/"><input type="hidden" name="codigo" value="' . $fila['codigo'] . '"><button type="submit">Ver todo</button></a></form></td>
                             </tr>';
@@ -138,7 +130,7 @@
                         }
                     } else {
                         print('<b>
-                        No se han encontrado registros. 😰
+                        No se ha encontrado registros que concuerden con los parametros de busqueda. 😰
                          </b>');
                     }
             }
