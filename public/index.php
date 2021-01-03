@@ -4,7 +4,7 @@ $server = $_SERVER['HTTP_HOST'];
 
 if ($myurl == '/') {
     include '../Views/personas.php';
-} elseif ($myurl == '/nueva-persona/') {
+} elseif ($myurl == '/nueva-persona/' or $myurl == '/nueva-persona') {
     include '../Views/nuevaPersona.php';
 } elseif ($myurl == '/historial/') {
     include '../Views/personas.php';
