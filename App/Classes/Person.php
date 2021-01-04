@@ -3,7 +3,7 @@
   * @desc this class will hold functions for people table
   * examples include age(), gender(), academic()
   * @author Alejandro Chanquín chanquin921@gmail.com
-  * @required ...
+  * @required Connection.php
 */
 class Person {
   // Properties
@@ -29,7 +29,7 @@ class Person {
 
 
   // Methods
-  function __construct($code, $name, $countryId, $mainPhone, $address, $country, $department, $municipality,
+  public function __construct($code, $name, $countryId, $mainPhone, $address, $country, $department, $municipality,
   $gender, $academic, $born, $maritalStatus, $ocupation, $medicalHistory, $traumaticHistory, $surgicalHistory,
   $alergicHistory, $gyneHistory, $lastUpdate){
     $this->code = $code;
@@ -53,7 +53,7 @@ class Person {
     $this->lastUpdate = $lastUpdate;
 
   }
-  function __destruct()
+  public function __destruct()
   {
     $this->code;
     $this->name;
@@ -76,17 +76,21 @@ class Person {
     $this->lastUpdate;
 
   }
-  function age ($born){
+  public function createPerson (){
+
+  }
+  public function age (){
     /*
      * @desc Find the age of the person
      * @param string $born - born day of the person
      * @return string - with the age and a message if is his birth day
     */
+    $born= $this->born;
     $birthdayMessage = '¡Feliz cumpleaños!';
-    $this->born = explode('-', $born);
-    $bornYear = $this->born['0'];
-    $bornMonth = $this->born['1'];
-    $bornDay = $this->born['2'];
+    $bornArray = explode('-', $born);
+    $bornYear = $bornArray['0'];
+    $bornMonth = $bornArray['1'];
+    $bornDay = $bornArray['2'];
 
       $actualYear = date('Y');
       $age = $actualYear - $bornYear;
@@ -111,12 +115,13 @@ class Person {
           }
       }
   }
-  function genderGet($gender){
+  public function genderGet(){
     /* 
      * @desc show the descriptive value of the normalize value of gender
      * @param int @gender - gender of the person in normalize version
      * @return string - with the gender
     */
+    $gender = $this->gender;
     $womanMsg = 'Femenino';
     $manMsg = 'Masculino';
     if ($gender == '2' ) {
@@ -125,7 +130,8 @@ class Person {
       return $manMsg;
   }
   }
-  function academic($academic){
+  public function academic(){
+    $academic = $this->academic;
     if ($academic == 1 ) {
       return 'Ninguno';
    } elseif ($academic == 2 ) {
@@ -140,12 +146,14 @@ class Person {
       return 'Universidad Superior';
   }
   }
-  function maritalStatus($maritalStatus, $gender){
+  public function maritalStatus(){
     /* 
      * @desc show the descriptive value of the normalize value of marital status
      * @param string $maritalStatus and int @gender - marital status and gender of the person in normalize version
      * @return string - with the marital status
     */
+    $maritalStatus = $this->maritalStatus;
+    $gender = $this->gender;
     if ($maritalStatus == 1 ) {
       if ($maritalStatus == 'f') {
           return 'Soltera';
@@ -167,4 +175,3 @@ class Person {
   }
   }
 }
-?>

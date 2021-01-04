@@ -1,16 +1,17 @@
-
 <!DOCTYPE html>
 <html lang>
+
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clínica Esperanza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="estilos.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="estilos.css" />
 </head>
+
 <body>
     <?php
-        include 'parts/header.php';
+    include 'parts/header.php';
     ?>
     <div>
     </div>
@@ -22,32 +23,35 @@
         </div>
         <div class="busqueda">
             <form action="https://admin.clinica.gt/" method="POST">
-                <input type="search" name="busqueda" autocomplete="off" placeholder="Buscar..." value="<?php if(isset($_POST['busqueda'])) { print($_POST['busqueda']);}?>" required>
-                    <select name="metodo" id="">
-                        <?php if($_POST['metodo'] == 'codigo') {
-                                print('<option value="codigo">Código</option>
+                <input type="search" name="busqueda" autocomplete="off" placeholder="Buscar..." value="<?php if (isset($_POST['busqueda'])) {
+                                                                                                            print($_POST['busqueda']);
+                                                                                                        } ?>" required>
+                <select name="metodo" id="">
+                    <?php if ($_POST['metodo'] == 'codigo') {
+                        print('<option value="codigo">Código</option>
                                 <option value="nombre">Nombre</option>
                                 <option value="dpi">DPI</option>');
-                            }   elseif ($_POST['metodo'] == 'dpi') {
-                                print('<option value="dpi">DPI</option>
+                    } elseif ($_POST['metodo'] == 'dpi') {
+                        print('<option value="dpi">DPI</option>
                                 <option value="nombre">Nombre</option>
                                 <option value="codigo">Código</option>');
-                            }   else {
-                                print('<option value="nombre">Nombre</option>
+                    } else {
+                        print('<option value="nombre">Nombre</option>
                                 <option value="codigo">Código</option>
                                 <option value="dpi">DPI</option>');
-                            }
-                            ?>
-                    </select>
+                    }
+                    ?>
+                </select>
                 <input type="submit" value="Buscar">
             </form>
-         </div>
+        </div>
     </div>
     <div class="contenedor">
-    <div class="tabla">
-        <table>
-            <?php
-            function tablaPersonas () {
+        <div class="tabla">
+            <table>
+                <?php
+                function tablaPersonas()
+                {
                     print('
                     <tr>
                 <th>
@@ -65,9 +69,9 @@
             </tr>
                     ');
                     require 'Conexion.php';
-                        $consulta = 'SELECT * FROM persona';
-                        $mysqli->set_charset("utf8");
-                        $resultado = $mysqli->query($consulta);
+                    $consulta = 'SELECT * FROM persona';
+                    $mysqli->set_charset("utf8");
+                    $resultado = $mysqli->query($consulta);
                     while ($fila = $resultado->fetch_assoc()) {
                         echo  '
                             <tr>
@@ -79,23 +83,24 @@
                     }
                 }
 
-            function buscarPersonas () {
-                require 'Conexion.php';
-                $consulta = $_POST['busqueda'];
-                $metodo = $_POST['metodo'];
-                require 'Conexion.php';
-                        if ($metodo == 'nombre') {
-                            $consulta = 'SELECT * FROM persona WHERE nombre REGEXP "'.$consulta.'"';
-                        }   elseif ($metodo == 'codigo') {
-                            $consulta = 'SELECT * FROM persona WHERE codigo REGEXP "'.$consulta.'"';
-                        }   else {
-                            $consulta = 'SELECT * FROM persona WHERE identificacion REGEXP "'.$consulta.'"';
-                        }
-                        $mysqli->set_charset("utf8");
-                        $resultado = $mysqli->query($consulta);
+                function buscarPersonas()
+                {
+                    require 'Conexion.php';
+                    $consulta = $_POST['busqueda'];
+                    $metodo = $_POST['metodo'];
+                    require 'Conexion.php';
+                    if ($metodo == 'nombre') {
+                        $consulta = 'SELECT * FROM persona WHERE nombre REGEXP "' . $consulta . '"';
+                    } elseif ($metodo == 'codigo') {
+                        $consulta = 'SELECT * FROM persona WHERE codigo REGEXP "' . $consulta . '"';
+                    } else {
+                        $consulta = 'SELECT * FROM persona WHERE identificacion REGEXP "' . $consulta . '"';
+                    }
+                    $mysqli->set_charset("utf8");
+                    $resultado = $mysqli->query($consulta);
 
-                        if (mysqli_num_rows($resultado)) {
-                            print('
+                    if (mysqli_num_rows($resultado)) {
+                        print('
                     <tr>
                 <th>
                     Código
@@ -117,8 +122,8 @@
                 </th>
             </tr>
                     ');
-                            while ($fila = $resultado->fetch_assoc()) {
-                                echo  '
+                        while ($fila = $resultado->fetch_assoc()) {
+                            echo  '
                                     <tr>
                                         <td>' . $fila['codigo'] . '</td>
                                         <td>' . $fila['nombre'] . '</td>
@@ -133,15 +138,33 @@
                         No se ha encontrado registros que concuerden con los parametros de busqueda. 😰
                          </b>');
                     }
-            }
-            if (isset($_POST['busqueda'])) {
-                buscarPersonas();
-            } else {
-                tablaPersonas();
-            }
-            ?>
-        </table>
-    </div>
+                }
+                if (isset($_POST['busqueda'])) {
+                    buscarPersonas();
+                } else {
+                    tablaPersonas();
+                }
+                ?>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </body>
+
 </html>
