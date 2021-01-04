@@ -9,6 +9,9 @@
 </head>
 <body>
     <?php
+    if ($_SERVER['REQUEST_URI'] == '/nueva-persona') {
+        header("Location:/nueva-persona/");
+    }
         include 'parts/header.php';
     ?>
         <div class="cabecera">

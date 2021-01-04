@@ -1,61 +1,46 @@
-<?php
-class CheckUp {
-    /*
-     * @desc this class will hold functions for people table
-     * examples include age(), gender(), academic()
-     * @author Alejandro Chanquín chanquin921@gmail.com
-     * @required Connection.php
-    */
-    // Properties
-    private $code;
-    private $personCode;
-    public $pacientName;
+<?php 
+class Appointment {
+    //Properties
+    public $code;
+    public $name;
+    public $phone;
+    public $secondPhone;
+    public $mail;
     public $date;
-    public $pacientSD; /* Pacient Subjective Data */
-    public $medicSD; /* Medic Subjective Data */
-    public $weight;
-    public $height;
-    public $cardiacFreq; /* Cardiac Frequency */
-    public $respiratoryRate;
-    public $temperature;
-    public $bloodPress; /* Blood Pressure */
-    public $pulse;
-    public $OxSat; /* Oxigen Saturation */
-    public $newData;
-    public $diagnosis;
-    public $treatment;
-    public $comments;
-    public $observations;
+    public $time;
+    public $status;
+    private $timeStamp;
 
-    // Insert customer data into customer table
-		public function createCheckUp($postData)
+    //Methods
+    public function __construct($code, $name, $phone, $secondPhone, $mail, $date, $time, $status, $timeStamp)
+    {
+        $this->code = $code;
+        $this->name = $name;
+        $this->phone = $phone;
+        $this->secondPhone = $secondPhone;
+        $this->mail = $mail;
+        $this->date = $date;
+        $this->time = $time;
+        $this->status = $status;
+        $this->timeStamp = $timeStamp;
+    }
+
+    public function createAppointment($post)
 		{
-			$personCode = $this->con->$_POST['personCode'];
-			$date = $this->con->$_POST['date'];
-			$pacientSD = $this->con->$_POST['pacientSD'];
-            $medicSD = $this->con->$_POST['medicSD'];
-            $weight = $this->con->$_POST['weight'];
-            $height = $this->con->$_POST['height'];
-            $cardiacFreq = $this->con->$_POST['cardiacFreq'];
-            $respiratoryRate = $this->con->$_POST['respiratoryRate'];
-            $temperature = $this->con->$_POST['temperature'];
-            $bloodPress = $this->con->$_POST['bloodPress'];
-            $pulse = $this->con->$_POST['pulse'];
-            $OxSat = $this->con->$_POST['OxSat'];
-            $newData = $this->con->$_POST['newData'];
-            $diagnosis = $this->con->$_POST['diagnosis'];
-            $treatment = $this->con->$_POST['treatment'];
-            $comments = $this->con->$_POST['comments'];
-            $observations = $this->con->$_POST['observations'];
-			$query="INSERT INTO checkUp(personCode, date, pacientSD, medicSD, weight, height,
-            cardiacFreq, respiratoryRate, temperature, bloodPress, pulse, OxSat,
-            newData, diagnosis, treatment, comments, observations) 
-            VALUES('$personCode','$date','$pacientSD','$medicSD', '$weight', '$height', '$cardiacFreq',
-            '$respiratoryRate', '$temperature', '$bloodPress', '$pulse', '$OxSat', '$newData', '$diagnosis',
-            '$treatment', '$comments', '$observations')";
+			$code = $this->con->$_POST['code'];
+            $name = $this->con->$_POST['name'];
+            $phone = $this->con->$_POST['phone'];
+            $secondPhone = $this->con->$_POST['secondPhone'];
+            $date = $this->con->$_POST['date'];
+            $time = $this->con->$_POST['time'];
+            $status = $this->con->$_POST['status'];
+            $timeStamp = $this->con->$_POST['timeStamp'];
+			$query="INSERT INTO checkUp(code, name, phone, secondPhone, date, time, status, timeStamp) 
+            VALUES('$code','$name','$phone','$secondPhone', '$date', '$time', '$status',
+            '$timeStamp')";
 			$sql = $this->con->query($query);
 			if ($sql==true) {
-			    header("Location:/");
+			    header("Location:/appointments/");
 			}else{
 			    echo "Registration failed try again!";
 			}
@@ -91,7 +76,7 @@ class CheckUp {
 		}
 
 		// Update customer data into customer table
-		public function updateCheckUp($postData)
+		public function updateCheckUp($post)
 		{
 		    $personCode = $this->con->$_POST['personCode'];
 			$date = $this->con->$_POST['date'];
@@ -110,7 +95,7 @@ class CheckUp {
             $treatment = $this->con->$_POST['treatment'];
             $comments = $this->con->$_POST['comments'];
             $observations = $this->con->$_POST['observations'];
-		if (!empty($code) && !empty($postData)) {
+		if (!empty($id) && !empty($postData)) {
 			$query = "UPDATE checkUp SET date = '$date', pacienteSD = '$pacientSD', medicSD = '$medicSD',
 			weight = '$weight', height = '$height', cardiacFreq = '$cardiacFreq', respiratoryRate = '$respiratoryRate',
 			temperature = '$temperature', bloodPress = '$bloodPress', pulse = '$pulse', OxSat = '$OxSat',
