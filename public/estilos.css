@@ -250,18 +250,18 @@ table {
 /* Pantalla laptop */
 @media(max-width: 1200px){
   body {
-    background: #2d2d2d;
+    background: #fff;
   }
 }
 /* Pantalla Tablet */
 @media(max-width: 820px){
   body {
-    background: #8b3b3b;
+    background: #fff;
   }
 }
 /* Pantalla Teléfono */
 @media(max-width: 420px){
   body {
-    background: #38a704;
+    background: #fff;
   }
 }

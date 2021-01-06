@@ -1,7 +1,8 @@
 <?php
+
 class Connection {
-    private $host = '127.0.0.1';
-    private $user = 'root';
+    private $servername = '127.0.0.1';
+    private $username = 'root';
     private $password = '';
     private $database = 'clinkreh_esperanza';
     public $con;

@@ -36,8 +36,10 @@ if ($myurl == '/') {
     include '../Views/newAppointment.php';
 } elseif ($myurl == '/appointments/') {
     include '../Views/appointments.php';
-}
-else {
+} elseif ($myurl == '/test/person/') {
+    include '../View/personIndex.php';
+    include '../App/Classes/Person.php';
+} else {
     include '../Views/error404.php';
 }
 

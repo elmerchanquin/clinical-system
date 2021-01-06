@@ -1,11 +1,16 @@
 <?php
+namespace Html\Table;
+use mysqli;
+
 /*
   * @desc this class will hold functions for people table
   * examples include age(), gender(), academic()
   * @author Alejandro Chanquín chanquin921@gmail.com
   * @required Connection.php
 */
-class Person {
+
+class Person{
+
   // Properties
   public $code;
   public $name;
@@ -27,9 +32,22 @@ class Person {
   public $gyneHistory; /*  Gynecological Obstetric History  */
   private $lastUpdate;
 
-
+  private $servername = '127.0.0.1';
+  private $username = 'root';
+  private $password = '';
+  private $database = 'clinkreh_esperanza';
+  public $con;
+  public function __construct()
+  {
+      $this->con = new mysqli($this->servername, $this->username,$this->password,$this->database);
+      if(mysqli_connect_error()) {
+     trigger_error("Failed to connect to MySQL: " . mysqli_connect_error());
+      }else{
+    return $this->con;
+      }
+      } 
   // Methods
-  public function __construct($code, $name, $countryId, $mainPhone, $address, $country, $department, $municipality,
+  /* public function __construct($code, $name, $countryId, $mainPhone, $address, $country, $department, $municipality,
   $gender, $academic, $born, $maritalStatus, $ocupation, $medicalHistory, $traumaticHistory, $surgicalHistory,
   $alergicHistory, $gyneHistory, $lastUpdate){
     $this->code = $code;
@@ -75,7 +93,7 @@ class Person {
     $this->gyneHistory;
     $this->lastUpdate;
 
-  }
+  } */
   public function createPerson (){
 
   }
@@ -173,5 +191,20 @@ class Person {
           return 'Divorciado';
       }
   }
+  }
+  // Fetch customer records for show listing
+  public function displayPerson()
+  {
+      $query = "SELECT * FROM persona";
+      $result = $this->con->query($query);
+  if ($result->num_rows > 0) {
+      $data = array();
+      while ($row = $result->fetch_assoc()) {
+             $data[] = $row;
+      }
+     return $data;
+      } else{
+     echo "No found records";
+      }
   }
 }

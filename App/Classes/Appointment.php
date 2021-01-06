@@ -35,7 +35,7 @@ class Appointment {
             $time = $this->con->$_POST['time'];
             $status = $this->con->$_POST['status'];
             $timeStamp = $this->con->$_POST['timeStamp'];
-			$query="INSERT INTO checkUp(code, name, phone, secondPhone, date, time, status, timeStamp) 
+			$query="INSERT INTO appointment(code, name, phone, secondPhone, date, time, status, timeStamp) 
             VALUES('$code','$name','$phone','$secondPhone', '$date', '$time', '$status',
             '$timeStamp')";
 			$sql = $this->con->query($query);
@@ -47,9 +47,9 @@ class Appointment {
 		}
 
 		// Fetch customer records for show listing
-		public function displayData()
+		public function displayAppointment()
 		{
-		    $query = "SELECT * FROM CheckUp";
+		    $query = "SELECT * FROM appointment";
 		    $result = $this->con->query($query);
 		if ($result->num_rows > 0) {
 		    $data = array();
@@ -63,9 +63,9 @@ class Appointment {
 		}
 
 		// Fetch single data for edit from customer table
-		public function displyaRecordById($code)
+		public function displayAppointmentById($code)
 		{
-		    $query = "SELECT * FROM CheckUp WHERE code = '$code'";
+		    $query = "SELECT * FROM appointment WHERE code = '$code'";
 		    $result = $this->con->query($query);
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
@@ -76,34 +76,22 @@ class Appointment {
 		}
 
 		// Update customer data into customer table
-		public function updateCheckUp($post)
+		public function updateAppointment($post)
 		{
-		    $personCode = $this->con->$_POST['personCode'];
-			$date = $this->con->$_POST['date'];
-			$pacientSD = $this->con->$_POST['pacientSD'];
-            $medicSD = $this->con->$_POST['medicSD'];
-            $weight = $this->con->$_POST['weight'];
-            $height = $this->con->$_POST['height'];
-            $cardiacFreq = $this->con->$_POST['cardiacFreq'];
-            $respiratoryRate = $this->con->$_POST['respiratoryRate'];
-            $temperature = $this->con->$_POST['temperature'];
-            $bloodPress = $this->con->$_POST['bloodPress'];
-            $pulse = $this->con->$_POST['pulse'];
-            $OxSat = $this->con->$_POST['OxSat'];
-            $newData = $this->con->$_POST['newData'];
-            $diagnosis = $this->con->$_POST['diagnosis'];
-            $treatment = $this->con->$_POST['treatment'];
-            $comments = $this->con->$_POST['comments'];
-            $observations = $this->con->$_POST['observations'];
+		    $code = $this->con->$_POST['code'];
+            $name = $this->con->$_POST['name'];
+            $phone = $this->con->$_POST['phone'];
+            $secondPhone = $this->con->$_POST['secondPhone'];
+            $date = $this->con->$_POST['date'];
+            $time = $this->con->$_POST['time'];
+            $status = $this->con->$_POST['status'];
+            $timeStamp = $this->con->$_POST['timeStamp'];
 		if (!empty($id) && !empty($postData)) {
-			$query = "UPDATE checkUp SET date = '$date', pacienteSD = '$pacientSD', medicSD = '$medicSD',
-			weight = '$weight', height = '$height', cardiacFreq = '$cardiacFreq', respiratoryRate = '$respiratoryRate',
-			temperature = '$temperature', bloodPress = '$bloodPress', pulse = '$pulse', OxSat = '$OxSat',
-			newData = '$newData', diagnosis = '$diagnosis', treatment = '$treatment', comments = '$comments',
-			observations = '$observations' WHERE personCode = '$personCode'";
+			$query = "UPDATE appointment SET name = '$name', phone = '$phone', secondPhone = '$secondPhone',
+			date = '$date', time = '$time', status = '$status', timeStamp = '$timeStamp' WHERE code = '$code'";
 			$sql = $this->con->query($query);
 			if ($sql==true) {
-			    header("Location:/");
+			    header("Location:/appointments/");
 			}else{
 			    echo "Registration updated failed try again!";
 			}
@@ -113,12 +101,12 @@ class Appointment {
 
 
 		// Delete customer data from customer table
-		public function deleteRecord($code)
+		public function deleteAppointment($code)
 		{
-		    $query = "DELETE FROM customers WHERE id = '$code'";
+		    $query = "DELETE FROM appointment WHERE code = '$code'";
 		    $sql = $this->con->query($query);
 		if ($sql==true) {
-			header("Location:/");
+			header("Location:/appointments/");
 		}else{
 			echo "Record does not delete try again";
 		    }
