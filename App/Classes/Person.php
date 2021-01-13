@@ -1,6 +1,4 @@
 <?php
-namespace Html\Table;
-use mysqli;
 
 /*
   * @desc this class will hold functions for people table

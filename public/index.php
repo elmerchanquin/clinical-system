@@ -1,10 +1,18 @@
 <?php
 $myurl= $_SERVER['REQUEST_URI'];
 $server = $_SERVER['HTTP_HOST'];
+function UrlIncluder($page, $include)
+{
+    $myurl= $_SERVER['REQUEST_URI'];
+    $server = $_SERVER['HTTP_HOST'];
 
-if ($myurl == '/') {
-    include '../Views/personas.php';
-} elseif ($myurl == '/nueva-persona/' or $myurl == '/nueva-persona') {
+    if ($myurl == $page) {
+        include "../View/$include";
+    }
+}
+UrlIncluder('/', 'personIndex.php');
+UrlIncluder('/nueva-persona/', 'personCreate.php');
+/* if  ($myurl == '/nueva-persona/' or $myurl == '/nueva-persona') {
     include '../Views/nuevaPersona.php';
 } elseif ($myurl == '/historial/') {
     include '../Views/personas.php';
@@ -37,10 +45,11 @@ if ($myurl == '/') {
 } elseif ($myurl == '/appointments/') {
     include '../Views/appointments.php';
 } elseif ($myurl == '/test/person/') {
+    include '../Views/parts/header.php';
     include '../View/personIndex.php';
     include '../App/Classes/Person.php';
 } else {
     include '../Views/error404.php';
 }
-
+ */
 ?>

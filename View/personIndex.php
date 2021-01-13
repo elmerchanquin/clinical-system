@@ -13,7 +13,9 @@ $personObj = new Person();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../public/estilos.css" />
 </head> 
-
+<?php
+include '../Views/parts/header.php';
+?>
 <body>
     <div>
     </div>
