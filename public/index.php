@@ -1,17 +1,18 @@
 <?php
 $myurl= $_SERVER['REQUEST_URI'];
 $server = $_SERVER['HTTP_HOST'];
-function UrlIncluder($page, $include)
+function urlIncluder($page, $include)
 {
     $myurl= $_SERVER['REQUEST_URI'];
-    $server = $_SERVER['HTTP_HOST'];
 
     if ($myurl == $page) {
         include "../View/$include";
     }
 }
-UrlIncluder('/', 'personIndex.php');
-UrlIncluder('/nueva-persona/', 'personCreate.php');
+urlIncluder('/login/', 'login.php');
+urlIncluder('/', 'personIndex.php');
+urlIncluder('/nueva-persona/', 'personCreate.php');
+urlIncluder('/cerrar-sesion/', 'closeSesion.php');
 /* if  ($myurl == '/nueva-persona/' or $myurl == '/nueva-persona') {
     include '../Views/nuevaPersona.php';
 } elseif ($myurl == '/historial/') {

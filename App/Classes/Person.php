@@ -30,20 +30,6 @@ class Person extends Connection{
   public $gyneHistory; /*  Gynecological Obstetric History  */
   private $lastUpdate;
 
- /*  private $servername = '127.0.0.1';
-  private $username = 'root';
-  private $password = '';
-  private $database = 'clinkreh_esperanza';
-  public $con;
-  public function __construct()
-  {
-      $this->con = new mysqli($this->servername, $this->username,$this->password,$this->database);
-      if(mysqli_connect_error()) {
-     trigger_error("Failed to connect to MySQL: " . mysqli_connect_error());
-      }else{
-    return $this->con;
-      }
-      }  */
   // Methods
   /* public function __construct($code, $name, $countryId, $mainPhone, $address, $country, $department, $municipality,
   $gender, $academic, $born, $maritalStatus, $ocupation, $medicalHistory, $traumaticHistory, $surgicalHistory,
