@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Connection.php';
 /*
   * @desc this class will hold functions for people table
   * examples include age(), gender(), academic()
@@ -7,7 +7,7 @@
   * @required Connection.php
 */
 
-class Person{
+class Person extends Connection{
 
   // Properties
   public $code;
@@ -30,7 +30,7 @@ class Person{
   public $gyneHistory; /*  Gynecological Obstetric History  */
   private $lastUpdate;
 
-  private $servername = '127.0.0.1';
+ /*  private $servername = '127.0.0.1';
   private $username = 'root';
   private $password = '';
   private $database = 'clinkreh_esperanza';
@@ -43,7 +43,7 @@ class Person{
       }else{
     return $this->con;
       }
-      } 
+      }  */
   // Methods
   /* public function __construct($code, $name, $countryId, $mainPhone, $address, $country, $department, $municipality,
   $gender, $academic, $born, $maritalStatus, $ocupation, $medicalHistory, $traumaticHistory, $surgicalHistory,
@@ -193,7 +193,7 @@ class Person{
   // Fetch customer records for show listing
   public function displayPerson()
   {
-      $query = "SELECT * FROM persona";
+      $query = "SELECT * FROM person";
       $result = $this->con->query($query);
   if ($result->num_rows > 0) {
       $data = array();
@@ -205,4 +205,41 @@ class Person{
      echo "No found records";
       }
   }
+  public function updatePerson($postData)
+		{
+		  $code = $this->con->$_POST['code'];
+      $name = $this->con->$_POST['name'];
+      $countryId = $this->con->$_POST['countryId'];
+      $phone = $this->con->$_POST['phone'];
+      $address = $this->con->$_POST['address'];
+      $country = $this->con->$_POST['country'];
+      $department = $this->con->$_POST['department'];
+      $municipality = $this->con->$_POST['municipality'];
+      $gender = $this->con->$_POST['gender'];
+      $academic = $this->con->$_POST['academic'];
+      $born = $this->con->$_POST['born'];
+      $maritalStatus = $this->con->$_POST['maritalStatus'];
+      $ocupation = $this->con->$_POST['ocupation'];
+      $medicalHistory = $this->con->$_POST['medicalHistory'];
+      $traumaticHistory = $this->con->$_POST['traumaticHistory'];
+      $surgicalHistory = $this->con->$_POST['surgicalHistory'];
+      $alergicHistory = $this->con->$_POST['alergicHistory'];
+      $gyneHistory = $this->con->$_POST['gyneHistory'];
+		if (!empty($code) && !empty($postData)) {
+			$query = "UPDATE person SET codigo = '$code', name = '$name', $countryId = 'countryId', phone = '$phone',
+      address = '$address', country = '$country', department = '$department', municipality = '$municipality',
+      gender = '$gender', academic = '$academic', born = '$born', maritalStatus = '$maritalStatus',
+      ocupation = '$ocupation', lastUpdate = TIMESTAMP, medicalHistory = '$medicalHistory',
+      traumaticHistory = '$traumaticHistory', surgicalHistory = '$surgicalHistory', 
+      alergicHistory = '$alergicHistory', gyneHistory = '$gyneHistory' WHERE codigo = '$code'";
+			$sql = $this->con->query($query);
+			if ($sql==true) {
+			    header("Location:/#$code");
+			}else{
+			    echo "Registration updated failed try again!";
+			}
+		    }
+			
+		}
 }
+

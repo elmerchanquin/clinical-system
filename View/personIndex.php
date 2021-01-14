@@ -1,7 +1,7 @@
 <?php
 // Include database file
 require_once '../App/Classes/Person.php';
-
+require_once '../App/Classes/Connection.php';
 $personObj = new Person();
 ?>
 <!DOCTYPE html>
@@ -32,12 +32,6 @@ include '../Views/parts/header.php';
                     <option value="codigo">Código</option>
                     <option value="nombre">Nombre</option>
                     <option value="dpi">DPI</option>
-                    <option value="dpi">DPI</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="codigo">Código</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="codigo">Código</option>
-                    <option value="dpi">DPI</option>
                 </select>
                 <input type="submit" value="Buscar">
             </form>
@@ -65,8 +59,8 @@ include '../Views/parts/header.php';
                     foreach ($people as $person) {
                 ?>
                 <tr>
-                    <td><?php print($person['nombre']); ?></td>
-                    <td><?php print($person['telefono']); ?></td>
+                    <td><?php print($person['name']); ?></td>
+                    <td><?php print($person['phone']); ?></td>
                     <td>
                         <form method="POST" action="/consulta/"><input type="hidden"
                                 name="codigo" value="<?php print($person['codigo']); ?>"><button
