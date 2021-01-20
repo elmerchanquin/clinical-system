@@ -6,16 +6,18 @@ $personObj = new Person();
 ?>
 <!DOCTYPE html>
 <html lang>
+
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clínica Esperanza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../public/estilos.css" />
-</head> 
+</head>
 <?php
 include '../Views/parts/header.php';
 ?>
+
 <body>
     <div>
     </div>
@@ -54,65 +56,24 @@ include '../Views/parts/header.php';
                         Ver todo
                     </th>
                 </tr>
-                <?php 
-                    $people = $personObj->displayPerson();
-                    foreach ($people as $person) {
+                <?php
+                $people = $personObj->displayPerson();
+                foreach ($people as $person) {
                 ?>
-                <tr>
-                    <td><?php print($person['name']); ?></td>
-                    <td><?php print($person['phone']); ?></td>
-                    <td>
-                        <form method="POST" action="/consulta/"><input type="hidden"
-                                name="codigo" value="<?php print($person['codigo']); ?>"><button
-                                type="submit">Consulta</button></a></form>
-                    </td>
-                    <td>
-                        <form method="POST" action="/ver-todo/"><input type="hidden"
-                                name="codigo" value="<?php print($person['codigo']); ?>"><button type="submit">Ver
-                                todo</button></a></form>
-                    </td>
-                </tr>
-                <?php } 
+                    <tr>
+                        <td><?php print($person['name']); ?></td>
+                        <td><?php print($person['phone']); ?></td>
+                        <td>
+                            <form method="POST" action="/consulta/"><input type="hidden" name="codigo" value="<?php print($person['codigo']); ?>"><button type="submit">Consulta</button></a></form>
+                        </td>
+                        <td>
+                            <form method="POST" action="/ver-todo/"><input type="hidden" name="codigo" value="<?php print($person['codigo']); ?>"><button type="submit">Ver
+                                    todo</button></a></form>
+                        </td>
+                    </tr>
+                <?php
+                }
                 ?>
-                <!-- <tr>
-                    <th>
-                        Código
-                    </th>
-                    <th>
-                        Nombre
-                    </th>
-                    <th>
-                        Teléfono
-                    </th>
-                    <th>
-                        Identificación
-                    </th>
-                    <th>
-                        Nuevo historial
-                    </th>
-                    <th>
-                        Ver todo
-                    </th>
-                </tr>
-
-                <tr>
-                    <td>' . $fila['codigo'] . '</td>
-                    <td>' . $fila['nombre'] . '</td>
-                    <td>' . $fila['telefono'] . '</td>
-                    <td>' . $fila['identificacion'] . '</td>
-                    <td>
-                        <form method="POST" action="/consulta/"><input type="hidden"
-                                name="codigo" value="' . $fila['codigo'] . '"><button
-                                type="submit">Consulta</button></a></form>
-                    </td>
-                    <td>
-                        <form method="POST" action="/ver.todo/"><input type="hidden"
-                                name="codigo" value="' . $fila['codigo'] . '"><button type="submit">Ver
-                                todo</button></a></form>
-                    </td>
-                </tr><b>
-                    No se ha encontrado registros que concuerden con los parametros de busqueda. 😰
-                </b> -->
             </table>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">

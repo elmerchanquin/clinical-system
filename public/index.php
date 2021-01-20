@@ -13,44 +13,5 @@ urlIncluder('/login/', 'login.php');
 urlIncluder('/', 'personIndex.php');
 urlIncluder('/nueva-persona/', 'personCreate.php');
 urlIncluder('/cerrar-sesion/', 'closeSesion.php');
-/* if  ($myurl == '/nueva-persona/' or $myurl == '/nueva-persona') {
-    include '../Views/nuevaPersona.php';
-} elseif ($myurl == '/historial/') {
-    include '../Views/personas.php';
-} elseif ($myurl == '/nuevo-historial/') {
-    include '../Views/nuevoHistorial.php';
-} elseif ($myurl == '/ver-todo/') {
-    include '../Views/verTodo.php';
-} elseif ($myurl == '/consulta/') {
-    include '../Views/consulta.php';
-} elseif ($myurl == '/examen-fisico/') {
-    include '../Views/examenFisico.php';
-} elseif ($myurl == '/registrado/') {
-    include '../Views/registrado.php';
-} elseif ($myurl == '/login/') {
-    include '../Views/login.php';
-} elseif ($myurl == '/cerrar-sesion/') {
-    include '../Views/cerrarSesion.php';
-} elseif ($myurl == '/cerrar-sesion/') {
-    include '../Views/cerrarSesion.php';
-} elseif ($myurl == '/editar-persona/') {
-    include '../Views/editarPersonas.php';
-} elseif ($myurl == '/actualizar-persona/') {
-    include '../Views/actualizarPersona.php';
-} elseif ($myurl == '/editar-consulta/') {
-    include '../Views/editarConsultas.php';
-} elseif ($myurl == '/actualizar-consulta/') {
-    include '../Views/actualizarConsulta.php';
-} elseif ($myurl == '/new-appointment/') {
-    include '../Views/newAppointment.php';
-} elseif ($myurl == '/appointments/') {
-    include '../Views/appointments.php';
-} elseif ($myurl == '/test/person/') {
-    include '../Views/parts/header.php';
-    include '../View/personIndex.php';
-    include '../App/Classes/Person.php';
-} else {
-    include '../Views/error404.php';
-}
- */
+urlIncluder('/ver-todo/', 'personSingle.php');
 ?>

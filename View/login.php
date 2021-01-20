@@ -4,12 +4,6 @@
     $loginObj = new Login();
     $loginObj -> RedirectIfIsLogged();
     
-    if (isset($_POST['user'])) {
-        $user = $_POST['user'];
-        $password = $_POST['password'];
-        var_dump($loginObj -> giveAccess($user, $password));
-    }
-    
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +28,7 @@
     <div class="contenedor_login">
         <div class="centro">
             <img src="../assets/img/logo.jpg" alt="" height="50px">
-            <form action="<?php echo "https://$server/login/"; ?>" method="POST">
+            <form name="loginForm" action="<?php echo "https://$server/login/"; ?>" method="POST">
                 <div class="campo_login">
                     <input type="text" placeholder="Usuario:" name="user" value="<?php if (isset($_POST['user'])){print($_POST['user']);} ?>" required>
                 </div>
@@ -43,6 +37,13 @@
                 </div>
                 <button>Iniciar sesión</button>
             </form>
+            <?php
+            if (isset($_POST['user'])) {
+                $user = $_POST['user'];
+                $password = $_POST['password'];
+                print($loginObj -> giveAccess($user, $password));
+            }
+            ?>
         </div>
     </div>
 </body>

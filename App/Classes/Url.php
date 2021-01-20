@@ -16,15 +16,26 @@ class Url extends Connection
     public $counter;
 
     //Methods
-    public function urlIncluder($page, $include)
+    public function urlIncluder($page)
     {
         $this->page = $page;
-        $this->include = $include;
-
-        $query = '';
-
-        while ($a <= 10) {
-            # code...
+        $query = 'SELECT * FROM url';
+        $result = $this->con->query($query);
+        if ($result->num_rows > 0) {
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                   $data[] = $row;
+                   if ($data['page'] == $page) {
+                       $url = $data['page'];
+                       $include = $data['include'];
+                       break;
+                   }
+            }
+           if (isset($url)) {
+                include "../View/$include";
+           }
+            } else{
+           echo "No found records";
+            }
         }
     }
-}
