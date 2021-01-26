@@ -36,40 +36,40 @@ class Person extends Connection
     public function createPerson()
     {
     }
-    public function age()
+    public function age($born)
     {
         /*
      * @desc Find the age of the person
      * @param string $born - born day of the person
      * @return string - with the age and a message if is his birth day
     */
-        $born = $this->born;
+        $this->born = $born;
         $birthdayMessage = '¡Feliz cumpleaños!';
         $bornArray = explode('-', $born);
-        $bornYear = $bornArray['0'];
-        $bornMonth = $bornArray['1'];
-        $bornDay = $bornArray['2'];
+        $bornYear = (int)$bornArray['0'];
+        $bornMonth = (int)$bornArray['1'];
+        $bornDay = (int)$bornArray['2'];
 
-        $actualYear = date('Y');
+        $actualYear = (int)date('Y');
         $age = $actualYear - $bornYear;
 
-        $actualMonth = date('M');
+        $actualMonth = (int)date('M');
 
         $months =  $actualMonth - $bornMonth;
         if ($months < 0) {
-            print($age - 1);
+            return($age - 1);
         } elseif ($months > 0) {
-            print($age);
+            return($age);
         } elseif ($months == 0) {
             $bornDay;
-            $actualDay = date('D');
+            $actualDay = (int)date('D');
             $days =  $actualDay - $bornDay;
             if ($days == 0) {
-                print($birthdayMessage . $age);
+                return($birthdayMessage . $age);
             } elseif ($days < 0) {
-                print($age - 1);
+                return($age - 1);
             } elseif ($days > 0) {
-                print($age);
+                return($age);
             }
         }
     }
@@ -89,9 +89,9 @@ class Person extends Connection
             return $manMsg;
         }
     }
-    public function academic()
+    public function academic($academic)
     {
-        $academic = $this->academic;
+        $this->academic = $academic;
         if ($academic == 1) {
             return 'Ninguno';
         } elseif ($academic == 2) {
@@ -106,14 +106,14 @@ class Person extends Connection
             return 'Universidad Superior';
         }
     }
-    public function maritalStatus()
+    public function maritalStatus($maritalStatus)
     {
         /* 
      * @desc show the descriptive value of the normalize value of marital status
      * @param string $maritalStatus and int @gender - marital status and gender of the person in normalize version
      * @return string - with the marital status
     */
-        $maritalStatus = $this->maritalStatus;
+        $this->maritalStatus = $maritalStatus;
         $gender = $this->gender;
         if ($maritalStatus == 1) {
             if ($maritalStatus == 'f') {
@@ -182,35 +182,6 @@ class Person extends Connection
                 header("Location:/#$code");
             } else {
                 echo "Registration updated failed try again!";
-            }
-        }
-    }
-    public function edad($anoNacimiento, $mesNacimiento, $diaN)
-    {
-
-        $anoNacimiento;
-        $anoActual = 2020;
-        $edad = $anoActual - $anoNacimiento;
-        /* MESES */
-
-        $mesNacimiento;
-        $mesActual = 2;
-
-        $meses =  $mesActual - $mesNacimiento;
-        if ($meses < 0) {
-            print($edad - 1);
-        } elseif ($meses > 0) {
-            print($edad);
-        } elseif ($meses == 0) {
-            $diaN;
-            $diaA = 22;
-            $dias =  $diaA - $diaN;
-            if ($dias == 0) {
-                print('Felíz Cumpleaños, ya tienes ' . $edad);
-            } elseif ($dias < 0) {
-                print($edad - 1);
-            } elseif ($dias > 0) {
-                print($edad);
             }
         }
     }
