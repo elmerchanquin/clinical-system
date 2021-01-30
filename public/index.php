@@ -13,5 +13,6 @@ urlIncluder('/login/', 'login.php');
 urlIncluder('/', 'personIndex.php');
 urlIncluder('/nueva-persona/', 'personCreate.php');
 urlIncluder('/cerrar-sesion/', 'closeSesion.php');
-urlIncluder('/ver-todo/', 'personSingle.php');
+urlIncluder('/view-person/', 'personSingle.php');
+urlIncluder('/edit-person/', 'personUpdate.php');
 ?>

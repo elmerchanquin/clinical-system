@@ -64,10 +64,10 @@ include '../Views/parts/header.php';
                         <td><?php print($person['name']); ?></td>
                         <td><?php print($person['phone']); ?></td>
                         <td>
-                            <form method="POST" action="/consulta/"><input type="hidden" name="code" value="<?php print($person['codigo']); ?>"><button type="submit">Consulta</button></a></form>
+                            <form method="POST" action="/add-checkup/"><input type="hidden" name="code" value="<?php print($person['codigo']); ?>"><button type="submit">Consulta</button></a></form>
                         </td>
                         <td>
-                            <form method="POST" action="/ver-todo/"><input type="hidden" name="code" value="<?php print($person['codigo']); ?>"><button type="submit">Ver
+                            <form method="POST" action="/view-person/"><input type="hidden" name="code" value="<?php print($person['codigo']); ?>"><button type="submit">Ver
                                     todo</button></a></form>
                         </td>
                     </tr>

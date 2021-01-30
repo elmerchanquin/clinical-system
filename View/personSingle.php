@@ -17,6 +17,10 @@ $personObj = new Person();
 </head>
 <?php
 include '../Views/parts/header.php';
+if (isset($_SESSION['viewPerson'])) {
+    
+    $_POST['code'] = $_SESSION['viewPerson'];
+}
 $person = $personObj->displaySiglePerson($_POST['code']);
 $age = $personObj->age($person['born']);
 $marital = $personObj->maritalStatus($person['maritalStatus']);
@@ -137,7 +141,7 @@ $academic = $personObj->academic($person['academic']);
                 <?php
                 print('
                                 
-                                <form method="POST" action="/editar-persona/"><input type="hidden" name="codigo" value="' . $_POST['code'] . '"><button type="submit">Editar Persona</button></a></form>
+                                <form method="POST" action="/edit-person/"><input type="hidden" name="code" value="' . $_POST['code'] . '"><button type="submit">Editar Persona</button></a></form>
                                 ');
                 ?>
             </div>

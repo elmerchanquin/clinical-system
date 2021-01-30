@@ -57,19 +57,19 @@ class Person extends Connection
 
         $months =  $actualMonth - $bornMonth;
         if ($months < 0) {
-            return($age - 1);
+            return ($age - 1);
         } elseif ($months > 0) {
-            return($age);
+            return ($age);
         } elseif ($months == 0) {
             $bornDay;
             $actualDay = (int)date('D');
             $days =  $actualDay - $bornDay;
             if ($days == 0) {
-                return($birthdayMessage . $age);
+                return ($birthdayMessage . $age);
             } elseif ($days < 0) {
-                return($age - 1);
+                return ($age - 1);
             } elseif ($days > 0) {
-                return($age);
+                return ($age);
             }
         }
     }
@@ -152,37 +152,38 @@ class Person extends Connection
     }
     public function updatePerson($postData)
     {
-        $code = $this->con->$_POST['code'];
-        $name = $this->con->$_POST['name'];
-        $countryId = $this->con->$_POST['countryId'];
-        $phone = $this->con->$_POST['phone'];
-        $address = $this->con->$_POST['address'];
-        $country = $this->con->$_POST['country'];
-        $department = $this->con->$_POST['department'];
-        $municipality = $this->con->$_POST['municipality'];
-        $gender = $this->con->$_POST['gender'];
-        $academic = $this->con->$_POST['academic'];
-        $born = $this->con->$_POST['born'];
-        $maritalStatus = $this->con->$_POST['maritalStatus'];
-        $ocupation = $this->con->$_POST['ocupation'];
-        $medicalHistory = $this->con->$_POST['medicalHistory'];
-        $traumaticHistory = $this->con->$_POST['traumaticHistory'];
-        $surgicalHistory = $this->con->$_POST['surgicalHistory'];
-        $alergicHistory = $this->con->$_POST['alergicHistory'];
-        $gyneHistory = $this->con->$_POST['gyneHistory'];
-        if (!empty($code) && !empty($postData)) {
-            $query = "UPDATE person SET codigo = '$code', name = '$name', $countryId = 'countryId', phone = '$phone',
+        $code = $postData['code'];
+        $name = $postData['name'];
+        $countryId = $postData['countryId'];
+        $phone = $postData['phone'];
+        $address = $postData['address'];
+        $country = $postData['country'];
+        $department = $postData['department'];
+        $municipality = $postData['municipality'];
+        $gender = $postData['gender'];
+        $academic = $postData['academic'];
+        $born = $postData['born'];
+        $maritalStatus = $postData['maritalStatus'];
+        $ocupation = $postData['ocupation'];
+        $medicalHistory = $postData['medicalHistory'];
+        $traumaticHistory = $postData['traumaticHistory'];
+        $surgicalHistory = $postData['surgicalHistory'];
+        $alergicHistory = $postData['alergicHistory'];
+        $gyneHistory = $postData['gyneHistory'];
+
+        $query = "UPDATE person SET codigo = '$code', name = '$name', countryId = '$countryId', phone = '$phone',
       address = '$address', country = '$country', department = '$department', municipality = '$municipality',
       gender = '$gender', academic = '$academic', born = '$born', maritalStatus = '$maritalStatus',
-      ocupation = '$ocupation', lastUpdate = TIMESTAMP, medicalHistory = '$medicalHistory',
+      ocupation = '$ocupation', lastUpdate = CURRENT_TIMESTAMP, medicalHistory = '$medicalHistory',
       traumaticHistory = '$traumaticHistory', surgicalHistory = '$surgicalHistory', 
       alergicHistory = '$alergicHistory', gyneHistory = '$gyneHistory' WHERE codigo = '$code'";
-            $sql = $this->con->query($query);
-            if ($sql == true) {
-                header("Location:/#$code");
-            } else {
-                echo "Registration updated failed try again!";
-            }
+        $sql = $this->con->query($query);
+        if ($sql == true) {
+            session_start();
+            header("Location:/view-person/");
+            return $_SESSION['viewPerson'] = $code;
+        } else {
+            echo "Registration updated failed try again! " . $this->con->error;
         }
     }
     public function displaySiglePerson($code)
