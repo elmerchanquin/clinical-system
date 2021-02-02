@@ -24,18 +24,17 @@ class Url extends Connection
         if ($result->num_rows > 0) {
             $data = array();
             while ($row = $result->fetch_assoc()) {
-                   $data[] = $row;
-                   if ($data['page'] == $page) {
-                       $url = $data['page'];
-                       $include = $data['include'];
+                   if ($row['page'] == $this->page) {
+                       $url = $row['page'];
+                       $include = $row['include'];
                        break;
                    }
             }
            if (isset($url)) {
                 include "../View/$include";
-           }
             } else{
-           echo "No found records";
+                include "../Views/error404.php";
             }
         }
     }
+}

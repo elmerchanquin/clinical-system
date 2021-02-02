@@ -1,4 +1,5 @@
 <?php
+    $myurl= $_SERVER['REQUEST_URI'];
     session_start();
     if (isset($_SESSION['user'])) {
     } else {
@@ -22,7 +23,7 @@
                 echo "https://$server/"; ?>">
                     <img src="<?php
                     if ($myurl == '/') {
-                        print('public/assets/img/logo.jpg');
+                        print('/assets/img/logo.jpg');
                     } else {
                         print('../assets/img/logo.jpg');
                     }
@@ -32,10 +33,10 @@
         <nav>
             <ul>
                 <li><a href="<?php echo "https://$server/"; ?>">Personas</a></li>
-                <li><a href="<?php echo "https://$server/nueva-persona/"; ?>">Nueva Persona</a></li>
+                <li><a href="<?php echo "https://$server/new-person/"; ?>">Nueva Persona</a></li>
                 <li><a href="<?php echo "https://$server/appointments/"; ?>">Citas</a></li>
                 <li><a href="<?php echo "https://$server/new-appointment/"; ?>">Nueva Cita</a></li>
-                <li><a href="<?php echo "https://$server/cerrar-sesion/"; ?>">Cerrar Sesión</a></li>
+                <li><a href="<?php echo "https://$server/close/"; ?>">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>

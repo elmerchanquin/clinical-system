@@ -30,6 +30,7 @@
                 </div>
                 <div class="campo_login">
                     <input type="password" placeholder="Contraseña:" name="contrasena" required>
+                    <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" -->
                 </div>
                 <button>Iniciar sesión</button>
             </form>
