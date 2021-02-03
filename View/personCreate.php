@@ -14,7 +14,7 @@
     if ($_SERVER['REQUEST_URI'] == '/nueva-persona') {
         header("Location:/nueva-persona/");
     }
-        include 'parts/header.php';
+        include '../Views/parts/header.php';
     ?>
         <div class="cabecera">
             <div class="titulo">
