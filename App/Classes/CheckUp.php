@@ -62,7 +62,7 @@ class CheckUp {
 		}
 
 		// Fetch customer records for show listing
-		public function displayData()
+		public function displayCheckUp()
 		{
 		    $query = "SELECT * FROM CheckUp";
 		    $result = $this->con->query($query);
