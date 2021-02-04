@@ -1,14 +1,19 @@
 <?php
 // Include database file
 require_once '../App/Classes/CheckUp.php';
-require_once '../App/Classes/CheckUp.php';
+require_once '../App/Classes/Person.php';
+require_once '../App/Classes/Connection.php';
 $checkUpObj = new CheckUp();
+$personObj = new Person();
 ?>
 <!DOCTYPE html>
 <html lang>
 <?php
 include '../Views/parts/header.php';
-$checkUp = $checkUpObj->displayCheckUp();
+$person = $personObj->displaySiglePerson($_POST['code']);
+if (isset($_POST['reason'])) {
+    $checkUp = $checkUpObj->createCheckUp($_POST);
+}
 ?>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -42,12 +47,12 @@ $checkUp = $checkUpObj->displayCheckUp();
     <div class="contenedor">
         <form action="<?php echo "/add-checkup/"; ?>" method="POST" autocomplete="off">
             <div class="campo">
-                <input type="hidden" value="" name="code">
+                <input type="hidden" value="<?php print($person['codigo']); ?>" name="code">
             </div>
             <h3>Datos Generales</h3>
             <div class="campo">
                 <label for="name">Nombre:</label>
-                <input name="name" type="text" value="" disabled>
+                <input name="name" type="text" value="<?php print($person['name']); ?>" disabled>
             </div>
             <div class="campo">
                 <label for="reason">Motivo:</label>
@@ -106,11 +111,11 @@ $checkUp = $checkUpObj->displayCheckUp();
                 <textarea name="nuevos" id="" cols="30" rows="10" placeholder="Datos que el medico puede comprobar"></textarea>
             </div>
             <div class="campo">
-                <label for="imagenes">Imagenes Máximo 1MB (Próximamente)</label>
-                <input type="file" name="imagenes" id="" multiple="" accept=".jpg, .png, .jpge" disabled>
+                <label for="imagenes">Imagenes Máximo 1MB</label>
+                <input type="file" name="images" id="" multiple="" accept=".jpg, .png, .jpge" disabled>
             </div>
             <div class="campo">
-                <label for="videos">Video Máximo 150MB (Próximamente)</label>
+                <label for="videos">Video Máximo 150MB</label>
                 <input type="file" name="video" id="" accept=".mp4, .mov, .webm" disabled>
             </div>
             <h3>Procedimiento</h3>

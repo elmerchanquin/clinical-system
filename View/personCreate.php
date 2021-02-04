@@ -91,48 +91,6 @@
                     <button type="submit" class="form-button">Guardar</button>
                 </div>
             </form>
-            <?php
-                        require 'Conexion.php';
-                if (isset($_POST['nombre'])) {
-                        $nombre = $_POST['nombre'];
-                        $telefono = $_POST['telefono'];
-                        $identificacion = $_POST['identificacion'];
-                        $pais = $_POST['pais'];
-                        $direccion = $_POST['direccion'];
-                        $genero = $_POST['genero'];
-                        $estado = $_POST['estadoCivil'];
-                        $ocupacion = $_POST['ocupacion'];
-                        $escolaridad = $_POST['escolaridad'];
-                        $nacimiento = $_POST['nacimiento'];
-                        $atMedicos = $_POST['at-medicos'];
-                        $atQuirurgicos = $_POST['at-quirurgicos'];
-                        $atTraumaticos = $_POST['at-traumaticos'];
-                        $atAlergicos = $_POST['at-alergicos'];
-                        $atGineco = $_POST['at-gineco'];
-
-
-                        $sql = "INSERT INTO `persona` (`codigo`, `nombre`, `identificacion`, `telefono`, `direccion`, `pais`,
-                         `genero`, `escolaridad`, `nacimiento`, `estado_civil`, `ocupacion`, `updated_at`,
-                        `antecedentes_medicos`, `antecedentes_traumaticos`, `antecedentes_quirugico`,
-                        `antecedentes_alergicos`, `antecedentes_gineco_obstetricos`) VALUES (NULL, '$nombre', '$identificacion',
-                          '$telefono', '$direccion', '$pais', '$genero', '$escolaridad', '$nacimiento', '$estado',
-                         '$ocupacion', CURRENT_TIMESTAMP, '$atMedicos', '$atTraumaticos', '$atQuirurgicos', '$atAlergicos', '$atGineco');";
-
-
-                        $mysqli->set_charset("utf8");
-                        if (mysqli_query($mysqli, $sql)) {
-                            print('<script type="text/javascript">
-                            document.location = "https://admin.clinica.gt/registrado/";
-                        </script> ');
-                        } else {
-                            echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-                        }
-                        mysqli_close($mysqli);
-
-
-                }
-
-            ?>
         </div>
 </body>
 </html>

@@ -28,30 +28,30 @@ class CheckUp {
     public $observations;
 
     // Insert customer data into customer table
-		public function createCheckUp($postData)
-		{
-			$personCode = $this->con->$_POST['personCode'];
-			$date = $this->con->$_POST['date'];
-			$pacientSD = $this->con->$_POST['pacientSD'];
-            $medicSD = $this->con->$_POST['medicSD'];
-            $weight = $this->con->$_POST['weight'];
-            $height = $this->con->$_POST['height'];
-            $cardiacFreq = $this->con->$_POST['cardiacFreq'];
-            $respiratoryRate = $this->con->$_POST['respiratoryRate'];
-            $temperature = $this->con->$_POST['temperature'];
-            $bloodPress = $this->con->$_POST['bloodPress'];
-            $pulse = $this->con->$_POST['pulse'];
-            $OxSat = $this->con->$_POST['OxSat'];
-            $newData = $this->con->$_POST['newData'];
-            $diagnosis = $this->con->$_POST['diagnosis'];
-            $treatment = $this->con->$_POST['treatment'];
-            $comments = $this->con->$_POST['comments'];
-            $observations = $this->con->$_POST['observations'];
+		public function createCheckUp($data)
+		{	
+			$personCode = $data['personCode'];
+			$date = $data['date'];
+			$pacientSD = $data['pacientSD'];
+            $medicSD = $data['medicSD'];
+            $weight = $data['weight'];
+            $height = $data['height'];
+            $cardiacFreq = $data['cardiacFreq'];
+            $respiratoryRate = $data['respiratoryRate'];
+			$temperature = $data['temperature'];
+            $bloodPress = $data['bloodPress'];
+            $pulse = $data['pulse'];
+            $oxSat = $data['oxSat'];
+            $newData = $data['newData'];
+            $diagnosis = $data['diagnosis'];
+            $treatment = $data['treatment'];
+            $comments = $data['comments'];
+            $observations = $data['observations'];
 			$query="INSERT INTO checkUp(personCode, date, pacientSD, medicSD, weight, height,
             cardiacFreq, respiratoryRate, temperature, bloodPress, pulse, OxSat,
             newData, diagnosis, treatment, comments, observations) 
             VALUES('$personCode','$date','$pacientSD','$medicSD', '$weight', '$height', '$cardiacFreq',
-            '$respiratoryRate', '$temperature', '$bloodPress', '$pulse', '$OxSat', '$newData', '$diagnosis',
+            '$respiratoryRate', '$temperature', '$bloodPress', '$pulse', '$oxSat', '$newData', '$diagnosis',
             '$treatment', '$comments', '$observations')";
 			$sql = $this->con->query($query);
 			if ($sql==true) {
