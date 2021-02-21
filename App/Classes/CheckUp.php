@@ -1,5 +1,13 @@
 <?php
-class CheckUp {
+require_once 'Connection.php';
+/*
+  * @desc this class will hold functions for people table
+  * examples include age(), gender(), academic()
+  * @author Alejandro Chanquín chanquin921@gmail.com
+  * @required Connection.php
+*/
+
+class CheckUp extends Connection {
     /*
      * @desc this class will hold functions for people table
      * examples include age(), gender(), academic()
@@ -20,7 +28,7 @@ class CheckUp {
     public $temperature;
     public $bloodPress; /* Blood Pressure */
     public $pulse;
-    public $OxSat; /* Oxigen Saturation */
+    public $oxSat; /* Oxigen Saturation */
     public $newData;
     public $diagnosis;
     public $treatment;
@@ -57,14 +65,14 @@ class CheckUp {
 			if ($sql==true) {
 			    header("Location:/");
 			}else{
-			    echo "Registration failed try again!";
-			}
+			    echo "Registration failed try again!". $this->con->error;
+			}	
 		}
 
 		// Fetch customer records for show listing
-		public function displayCheckUp()
+		public function displayCheckUpHistory($code)
 		{
-		    $query = "SELECT * FROM CheckUp";
+		    $query = "SELECT * FROM checkup where personCode = '$code'";
 		    $result = $this->con->query($query);
 		if ($result->num_rows > 0) {
 		    $data = array();
@@ -78,9 +86,9 @@ class CheckUp {
 		}
 
 		// Fetch single data for edit from customer table
-		public function displyaRecordById($code)
+		public function displyaSingleCheckUp($code)
 		{
-		    $query = "SELECT * FROM CheckUp WHERE code = '$code'";
+		    $query = "SELECT * FROM checkup WHERE code = '$code'";
 		    $result = $this->con->query($query);
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();

@@ -5,8 +5,6 @@ require_once '../App/Classes/Connection.php';
 $personObj = new Person();
 if (isset($_POST['name'])) {
     $updatePerson = $personObj->updatePerson($_POST);
-} else {
-    print('nada');
 }
 ?>
 <!DOCTYPE html>

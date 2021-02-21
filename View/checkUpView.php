@@ -1,9 +1,7 @@
 <?php
 // Include database file
-require_once '../App/Classes/Person.php';
 require_once '../App/Classes/CheckUp.php';
 require_once '../App/Classes/Connection.php';
-$personObj = new Person();
 $checkUpObj = new CheckUp();
 ?>
 <!DOCTYPE html>
@@ -19,19 +17,16 @@ $checkUpObj = new CheckUp();
 </head>
 <?php
 include '../Views/parts/header.php';
-if (isset($_SESSION['viewPerson'])) {
+if (isset($_SESSION['viewCheckUp'])) {
     
-    $_POST['code'] = $_SESSION['viewPerson'];
+    $_POST['code'] = $_SESSION['viewCheckUp'];
 }
-$person = $personObj->displaySiglePerson($_POST['code']);
-$age = $personObj->age($person['born']);
-$marital = $personObj->maritalStatus($person['maritalStatus']);
-$academic = $personObj->academic($person['academic']);
+$checkUp = $checkUpObj->displyaSingleCheckUp($_POST['code']);
 ?>
 
 <body>
     <div class="cabecera">
-        <h1><?php print($person['name']);?></h1>
+        <h1><?php print($checkUp['reason']);?></h1>
     </div>
     <div class="contenedor dividido">
         <div class="contenedor_datos_persona">
@@ -135,16 +130,18 @@ $academic = $personObj->academic($person['academic']);
                         <?php print($person['gyneHistory']);?>
                         </div>
                     </div>
-                    <?php
+                </div>
+            </div>
+        </div>
+        <div class="contenedor_registros">
+            <div class="contenedor_historial">
+                <?php
                 print('
                                 
                                 <form method="POST" action="/edit-person/"><input type="hidden" name="code" value="' . $_POST['code'] . '"><button type="submit">Editar Persona</button></a></form>
                                 ');
                 ?>
-                </div>
             </div>
-        </div>
-        <div class="contenedor_registros">
             <div>
                 <h2>
                     Historial Médico
@@ -154,20 +151,6 @@ $academic = $personObj->academic($person['academic']);
                 <h3>
                     Consultas
                 </h3>
-                <?php
-                $checkUps = $checkUpObj->displayCheckUpHistory($person['codigo']);
-                foreach ($checkUps as $checkUp) {
-                ?>
-                    <div>
-                        <div><?php print($checkUp['reason']); ?></div>
-                        <div><?php print($checkUp['date']); ?></div>
-                        <div>
-                            <form method="POST" action="/update-checkup/"><input type="hidden" name="code" value="<?php print($checkUp['id']); ?>"><button type="submit">Editar Consulta</button></a></form>
-                </div>
-                    </div>
-                <?php
-                }
-                ?>
                 <div>
                     <form method="POST" action="/add-checkup/"><input type="hidden" name="code" value="<?php print($_POST['code']) ?>"><button type="submit">NUEVA CONSULTA</button></a></form>
                 </div>
