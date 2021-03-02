@@ -88,7 +88,7 @@ class CheckUp extends Connection {
 		// Fetch single data for edit from customer table
 		public function displyaSingleCheckUp($code)
 		{
-		    $query = "SELECT * FROM checkup WHERE code = '$code'";
+		    $query = "SELECT * FROM checkup WHERE id = '$code'";
 		    $result = $this->con->query($query);
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
