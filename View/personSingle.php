@@ -156,7 +156,7 @@ $academic = $personObj->academic($person['academic']);
                 </h3>
                 <?php
                 $checkUps = $checkUpObj->displayCheckUpHistory($person['codigo']);
-                foreach ($checkUps as $checkUp) {
+                if(!$checkUps == ''){foreach ($checkUps as $checkUp) {
                 ?>
                     <div>
                         <div><?php print($checkUp['reason']); ?></div>
@@ -166,7 +166,7 @@ $academic = $personObj->academic($person['academic']);
                 </div>
                     </div>
                 <?php
-                }
+                }}
                 ?>
                 <div>
                     <form method="POST" action="/add-checkup/"><input type="hidden" name="code" value="<?php print($_POST['code']) ?>"><button type="submit">NUEVA CONSULTA</button></a></form>

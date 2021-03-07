@@ -88,7 +88,7 @@ class CheckUp extends Connection {
 		// Fetch single data for edit from customer table
 		public function displyaSingleCheckUp($code)
 		{
-		    $query = "SELECT * FROM checkup WHERE code = '$code'";
+		    $query = "SELECT * FROM checkup WHERE id = '$code'";
 		    $result = $this->con->query($query);
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
@@ -101,37 +101,37 @@ class CheckUp extends Connection {
 		// Update customer data into customer table
 		public function updateCheckUp($postData)
 		{
-		    $personCode = $this->con->$_POST['personCode'];
-			$date = $this->con->$_POST['date'];
-			$pacientSD = $this->con->$_POST['pacientSD'];
-            $medicSD = $this->con->$_POST['medicSD'];
-            $weight = $this->con->$_POST['weight'];
-            $height = $this->con->$_POST['height'];
-            $cardiacFreq = $this->con->$_POST['cardiacFreq'];
-            $respiratoryRate = $this->con->$_POST['respiratoryRate'];
-            $temperature = $this->con->$_POST['temperature'];
-            $bloodPress = $this->con->$_POST['bloodPress'];
-            $pulse = $this->con->$_POST['pulse'];
-            $OxSat = $this->con->$_POST['OxSat'];
-            $newData = $this->con->$_POST['newData'];
-            $diagnosis = $this->con->$_POST['diagnosis'];
-            $treatment = $this->con->$_POST['treatment'];
-            $comments = $this->con->$_POST['comments'];
-            $observations = $this->con->$_POST['observations'];
-		if (!empty($code) && !empty($postData)) {
-			$query = "UPDATE checkUp SET date = '$date', pacienteSD = '$pacientSD', medicSD = '$medicSD',
+			$date = $postData['date'];
+			$reason = $postData['reason'];
+			$pacientSD = $postData['pacientSD'];
+            $medicSD = $postData['medicSD'];
+            $weight = $postData['weight'];
+            $height = $postData['height'];
+            $cardiacFreq = $postData['cardiacFreq'];
+            $respiratoryRate = $postData['respiratoryRate'];
+            $temperature = $postData['temperature'];
+            $bloodPress = $postData['bloodPress'];
+            $pulse = $postData['pulse'];
+            $oxSat = $postData['oxSat'];
+            $newData = $postData['newData'];
+            $diagnosis = $postData['diagnosis'];
+            $treatment = $postData['treatment'];
+            $comments = $postData['comments'];
+            $observations = $postData['observations'];
+			$code = $postData['code'];
+			$query = "UPDATE checkup SET reason = '$reason', date = '$date', pacientSD = '$pacientSD', medicSD = '$medicSD',
 			weight = '$weight', height = '$height', cardiacFreq = '$cardiacFreq', respiratoryRate = '$respiratoryRate',
-			temperature = '$temperature', bloodPress = '$bloodPress', pulse = '$pulse', OxSat = '$OxSat',
+			temperature = '$temperature', bloodPress = '$bloodPress', pulse = '$pulse', oxSat = '$oxSat',
 			newData = '$newData', diagnosis = '$diagnosis', treatment = '$treatment', comments = '$comments',
-			observations = '$observations' WHERE personCode = '$personCode'";
+			observations = '$observations' WHERE id = '$code'";
 			$sql = $this->con->query($query);
 			if ($sql==true) {
-			    header("Location:/");
+				print('listo');
 			}else{
 			    echo "Registration updated failed try again!";
+				echo("Error description: " . $sql -> error);
+				echo mysqli_error($this->con);
 			}
-		    }
-			
 		}
 
 
