@@ -67,26 +67,26 @@
             <?php
             function appointment_list () {
                     print('
-                    <tr>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    Teléfono
-                </th>
-                <th>
-                    Fecha
-                </th>
-                <th>
-                    Hora
-                </th>
-                <th>
-                    Estado
-                </th>
-                <th>
-                    Más
-                </th>
-            </tr>
+                      <tr>
+                  <th>
+                      Nombre
+                  </th>
+                  <th>
+                      Teléfono
+                  </th>
+                  <th>
+                      Fecha
+                  </th>
+                  <th>
+                      Hora
+                  </th>
+                  <th>
+                      Estado
+                  </th>
+                  <th>
+                      Más
+                  </th>
+              </tr>
                     ');
                     require 'Conexion.php';
                         $consulta = 'SELECT * FROM appointment';
