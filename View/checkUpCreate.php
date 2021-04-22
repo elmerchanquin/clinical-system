@@ -49,7 +49,7 @@ if (isset($_POST['code'])) {
         </div>
     </div>
     <div class="contenedor">
-        <form action="<?php echo "/add-checkup/"; ?>" method="POST" autocomplete="off">
+        <form action="/add-checkup/" method="POST" autocomplete="off">
             <div class="campo">
                 <input type="hidden" value="<?php print($person['codigo']); ?>" name="personCode">
             </div>

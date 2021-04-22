@@ -15,7 +15,7 @@ $personObj = new Person();
     <link rel="stylesheet" type="text/css" media="screen" href="../public/estilos.css" />
 </head>
 <?php
-include '../Views/parts/header.php';
+include '../View/sections/header.php';
 ?>
 
 <body>

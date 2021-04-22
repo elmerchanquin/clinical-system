@@ -1,4 +1,9 @@
 <?php
+// Include database file
+require_once '../App/Classes/CheckUp.php';
+require_once '../App/Classes/Person.php';
+require_once '../App/Classes/Connection.php';
+$personObj = new Person();
 ?>
 <!DOCTYPE html>
 <html lang>
@@ -11,22 +16,19 @@
 </head>
 <body>
     <?php
-    if ($_SERVER['REQUEST_URI'] == '/nueva-persona') {
-        header("Location:/nueva-persona/");
-    }
         include '../Views/parts/header.php';
     ?>
         <div class="cabecera">
             <div class="titulo">
                 <h1>
-                    Nueva Persona
+                    Nueva persona
                 </h1>
             </div>
         </div>
         <div class="contenedor">
-            <form action="https://admin.clinica.gt/nueva-persona/" autocomplete="off" method='POST'>
+            <form action="/new-person/" autocomplete="off" method='POST'>
             <div class="campo">
-                    <input type="text" placeholder="Identificacción del país" name="identificacion">
+                    <input type="text" placeholder="DPI/CUI" name="identificacion">
                 </div>
                 <div class="campo">
                     <input type="text" placeholder="Nombre completo" name="nombre" required>
