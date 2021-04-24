@@ -29,7 +29,9 @@
                         <h5 class="card-title">Pacientes registrados</h5>
                         <p class="card-text">17 Pacientes registrados.</p>
                         <p class="card-text">Existen pacientes con datos generales faltantes. <a href="#">Completar datos ahora.</a></p>
-                        <button type="button" class="btn btn-primary">Ingresar nuevo paciente</button>
+                        <form action="" method="POST">
+                        <button type="submit" class="btn btn-primary" formaction="/new-patient/">Ingresar nuevo paciente</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -37,10 +39,12 @@
                 <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Consultas</div>
                     <div class="card-body">
-                        <h5 class="card-title">Pacientes registrados</h5>
-                        <p class="card-text">17 Pacientes registrados.</p>
-                        <p class="card-text">Existen pacientes con datos generales faltantes. <a href="#">Completar datos ahora.</a></p>
-                        <button type="button" class="btn btn-primary">Ingresar nuevo paciente</button>
+                        <h5 class="card-title">Consultas del día</h5>
+                        <p class="card-text">Elmer Chanquín. <a href="#">Ver consulta.</a></p>
+                        <p class="card-text">Alejandro Pérez. <a href="#">Ver consulta.</a></p>
+                        <form action="" method="POST">
+                        <button type="submit" class="btn btn-primary" formaction="/add-checkup/">Agregar consulta</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -48,10 +52,15 @@
                 <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Citas</div>
                     <div class="card-body">
-                        <h5 class="card-title">Pacientes registrados</h5>
-                        <p class="card-text">17 Pacientes registrados.</p>
-                        <p class="card-text">Existen pacientes con datos generales faltantes. <a href="#">Completar datos ahora.</a></p>
-                        <button type="button" class="btn btn-primary">Ingresar nuevo paciente</button>
+                        <h5 class="card-title">Citas del día</h5>
+                        <p class="card-text">4 Pacientes tienen cita hoy.</p>
+                        <p class="card-text">Elmer Chanquín <a href="#">Ver.</a></p>
+                        <p class="card-text">Alejandro Pérez <a href="#">Ver.</a></p>
+                        <p class="card-text">Alejandro Chanquín <a href="#">Ver.</a></p>
+                        <p class="card-text">Elmer Pérez <a href="#">Ver.</a></p>
+                        <form action="" method="POST">
+                        <button type="submit" class="btn btn-primary" formaction="/new-appointment/">Nueva cita</button>
+                        </form>
                     </div>
                 </div>
             </div>

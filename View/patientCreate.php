@@ -7,39 +7,40 @@ $personObj = new Person();
 ?>
 <!DOCTYPE html>
 <html lang>
+
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clínica Esperanza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../estilos.css"/>
 </head>
+
 <body>
     <?php
-        include '../Views/parts/header.php';
+    include '../View/sections/header.php';
     ?>
-        <div class="cabecera">
-            <div class="titulo">
-                <h1>
-                    Nueva persona
-                </h1>
-            </div>
+    <div class="cabecera">
+        <div class="titulo">
+            <h1>
+                Nueva persona
+            </h1>
         </div>
-        <div class="contenedor">
-            <form action="/new-person/" autocomplete="off" method='POST'>
+    </div>
+    <div class="contenedor">
+        <form action="/new-person/" autocomplete="off" method='POST'>
             <div class="campo">
-                    <input type="text" placeholder="DPI/CUI" name="identificacion">
-                </div>
-                <div class="campo">
-                    <input type="text" placeholder="Nombre completo" name="nombre" required>
-                </div>
-                <div class="campo">
-                    <input type="text" placeholder="Télefono" name="telefono">
-                </div>
-                <div class="campo">
-                    <input type="text" placeholder="País" name='pais' value="Guatemala">
-                </div>
-                <div class="campo">
+                <input type="text" placeholder="DPI/CUI" name="identificacion">
+            </div>
+            <div class="campo">
+                <input type="text" placeholder="Nombre completo" name="nombre" required>
+            </div>
+            <div class="campo">
+                <input type="text" placeholder="Télefono" name="telefono">
+            </div>
+            <div class="campo">
+                <input type="text" placeholder="País" name='pais' value="Guatemala">
+            </div>
+            <div class="campo">
                 <div class="campo">
                     <input type="text" placeholder="Dirección" name="direccion">
                 </div>
@@ -61,7 +62,7 @@ $personObj = new Person();
                 </div>
                 <div class="campo">
                     <label for="naciemiento">Fecha de nacimiento:</label>
-                    <input type="date" placeholder="Fecha de Nacimiento" name="nacimiento" max="<?php echo date('d')."/".date('m')."/".date('Y');?>" required>
+                    <input type="date" placeholder="Fecha de Nacimiento" name="nacimiento" max="<?php echo date('d') . "/" . date('m') . "/" . date('Y'); ?>" required>
                 </div>
                 <div class="campo">
                     <select name="escolaridad" id="">
@@ -92,7 +93,8 @@ $personObj = new Person();
                 <div class="campo">
                     <button type="submit" class="form-button">Guardar</button>
                 </div>
-            </form>
-        </div>
+        </form>
+    </div>
 </body>
+
 </html>

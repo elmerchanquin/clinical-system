@@ -9,7 +9,7 @@ $personObj = new Person();
 <!DOCTYPE html>
 <html lang>
 <?php
-include '../Views/parts/header.php';
+include '../View/sections/header.php';
 if (isset($_POST['date'])) {
     $checkUp = $checkUpObj->createCheckUp($_POST);
 }
@@ -24,7 +24,6 @@ if (isset($_POST['code'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clínica Esperanza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../estilos.css" />
     <script>
         window.onload = function() {
             var fecha = new Date(); //Fecha actual

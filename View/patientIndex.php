@@ -12,7 +12,6 @@ $personObj = new Person();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clínica Esperanza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../public/estilos.css" />
 </head>
 <?php
 include '../View/sections/header.php';
@@ -67,7 +66,7 @@ include '../View/sections/header.php';
                             <form method="POST" action="/add-checkup/"><input type="hidden" name="code" value="<?php print($person['codigo']); ?>"><button type="submit">Consulta</button></a></form>
                         </td>
                         <td>
-                            <form method="POST" action="/view-person/"><input type="hidden" name="code" value="<?php print($person['codigo']); ?>"><button type="submit">Ver
+                            <form method="POST" action="/view-patient/"><input type="hidden" name="code" value="<?php print($person['codigo']); ?>"><button type="submit">Ver
                                     todo</button></a></form>
                         </td>
                     </tr>

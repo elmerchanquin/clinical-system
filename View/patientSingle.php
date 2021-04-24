@@ -14,11 +14,10 @@ $checkUpObj = new CheckUp();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clínica Esperanza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../estilos.css" />
     <script src="../main.js"></script>
 </head>
 <?php
-include '../Views/parts/header.php';
+include '../View/sections/header.php';
 if (isset($_SESSION['viewPerson'])) {
     
     $_POST['code'] = $_SESSION['viewPerson'];

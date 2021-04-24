@@ -21,7 +21,7 @@
 <header>
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand col-md-2" href=""><img src="<?php if ($myurl == '/') { print('/assets/img/logo.jpg');} else {print('../assets/img/logo.jpg');}
+    <a class="navbar-brand col-md-2" href="/"><img src="<?php if ($myurl == '/') { print('/assets/img/logo.jpg');} else {print('../assets/img/logo.jpg');}
                     ?>" alt="" height="50px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,13 +38,13 @@
             <a class="nav-link" href='<?php echo "https://$server/appointments/"; ?>'>Citas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href='<?php echo "https://$server/bills/"; ?>'>Facturas</a>
+            <a class="nav-link" href='<?php echo "https://$server/tickets/"; ?>'>Facturas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href='<?php echo "https://$server/close/"; ?>'>Cerrar sesión</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" method="POST">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
