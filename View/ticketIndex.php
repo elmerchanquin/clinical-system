@@ -19,7 +19,7 @@
             </h1>
         </div>
     </div>
-    <div class="contenedor">
+    <div class="container">
         <div class="tabla">
             <table>
                 <tr>
@@ -27,19 +27,13 @@
                         Nombre
                     </th>
                     <th>
-                        Teléfono
+                        Nit
                     </th>
                     <th>
                         Fecha
                     </th>
                     <th>
-                        Hora
-                    </th>
-                    <th>
-                        Estado
-                    </th>
-                    <th>
-                        Más
+                        Imprimir
                     </th>
                 </tr>
             </table>

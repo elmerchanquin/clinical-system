@@ -33,8 +33,29 @@ class Person extends Connection
 
     // Methods
 
-    public function createPerson()
+    public function createPerson($postData)
     {
+        $countryId = $postData['id'];
+        $firstName = $postData['firstName'];
+        $secondName = $postData['secondName'];
+        $firstLastname = $postData['firstLastname'];
+        $secondLastname = $postData['secondLastname'];
+        $phone = $postData['phone'];
+        $country = $postData['country'];
+        $address = $postData['address'];
+        $gender = $postData['gender'];
+        $maritalStatus = $postData['maritalStatus'];
+        $ocupation = $postData['ocupation'];
+        $bornDate = $postData['bornDate'];
+        $academic = $postData['academic'];
+        $query = "INSERT INTO person (name, secondName, firstLastName, secondLastName, countryId, phone, address, country, gender, academic, born, maritalStatus, ocupation, lastUpdate) 
+        VALUES ('$firstName', '$secondName', '$firstLastname', '$secondLastname', '$countryId', '$phone', '$address', '$country', '$gender', '$academic', '$bornDate', '$maritalStatus', '$ocupation', CURRENT_TIMESTAMP)";
+        $sql = $this->con->query($query);
+        if ($sql == true) {
+            return true;
+        } else {
+            echo "Creation failed try again! " . $this->con->error;
+        }
     }
     public function age($born)
     {
