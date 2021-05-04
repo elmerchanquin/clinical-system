@@ -23,16 +23,24 @@ $personObj = new Person();
         <?php
         if (isset($_POST['firstName'])) {
             if ($people = $personObj->createPerson($_POST) == true) {
-                print($_POST['firstName'] . $_POST['secondName'] . " ha sido registrado satisfactoriamente.");
-                print("¿Qué desea realizar ahora?");
-                print('
-                <form action="" method="POST">
-                    <button type="submit" class="btn btn-primary" formaction="/edit-patient/">Completar información</button>
-                </form>
-                <form action="" method="POST">
-                     <button type="submit" class="btn btn-primary" formaction="/add-checkup/">Agregar consulta</button>
-                </form>
-                ');
+                $query = "SELECT MAX(codigo) AS codigo FROM person";
+                $sql = $this->con->query($query);
+
+                if ($row = mysqli_fetch_row($sql)) {
+                    $id = $row[0];
+                    print($_POST['firstName'] . " " . $_POST['secondName'] . " ha sido registrado satisfactoriamente con el código " . $id . ". ");
+                    print("¿Qué desea realizar ahora?");
+                    print('
+                    <form action="" method="POST">
+                        <input type="hidden" name="code" value="' . $id . '">
+                        <button type="submit" class="btn btn-primary" formaction="/edit-patient/">Completar información</button>
+                    </form>
+                    <form action="" method="POST">
+                        <input type="hidden" name="code" value="' . $id . '">
+                        <button type="submit" class="btn btn-primary" formaction="/add-checkup/">Agregar consulta</button>
+                    </form>
+                    ');
+                }
             } else {
                 print('Registration failed!');
             }
@@ -114,7 +122,7 @@ $personObj = new Person();
                             <div class="col">
                                 <label for="maritalStatus" class="col-form-label-lg">Estado Civil</label>
                                 <select id="maritalStatus" class="col-12 form-control-lg" name="maritalStatus">
-                                    <option disabled selected>Seleccionar</option>
+                                    <option disabled value="0" selected>Seleccionar</option>
                                     <option value="1">Soltero/a</option>
                                     <option value="2">Casado/a</option>
                                     <option value="3">Divorciado/a</option>
